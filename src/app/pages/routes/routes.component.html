@@ -4,7 +4,7 @@
     <fa-icon [icon]="faCircleExclamation"></fa-icon>
     <p class="warning-text no-margin-text">Lista de compras alterada. Deverás gerar novas rotas.</p>
   </div>
-  <div class="info-container">
+  <div class="info-container" *ngIf="isLoaded">
     <ng-container *ngIf="(!shoppingList || shoppingList.genericProductQuantities.length === 0)">
       <div class="empty-list-message">
         <fa-icon class="icon" [icon]="faCartShopping"></fa-icon>
@@ -15,13 +15,13 @@
       </div>
     </ng-container>
     <ng-container *ngIf="(shoppingList && shoppingList.genericProductQuantities.length !== 0)
-    && (routes && routes!.length==0) || (!routes)">
+    && (isLoaded && routes && routes!.length==0)">
           <div class="empty-list-message">
             <fa-icon class="icon" [icon]="faRoute"></fa-icon>
             <h3 class="grey-text light-text">Não existem rotas disponiveis.<br>Clica no botão abaixo para gerar rotas!</h3>
           </div>
       </ng-container>
-      <ng-container *ngIf="routes && cheapestRoute && fastestRoute && savings">
+      <ng-container *ngIf="isLoaded">
         <app-route-main-card class="app-route-main-card"
           [route]="cheapestRoute"
           [titleCard]="'Maior poupança'"
@@ -38,12 +38,13 @@
         </app-route-main-card>
       </ng-container>
     </div>
-  <div class="button-container" *ngIf="!(!shoppingList || shoppingList.genericProductQuantities.length === 0)">
+  <div class="button-container" *ngIf="isLoaded && !(!shoppingList || shoppingList.genericProductQuantities.length === 0)">
     <div class="clear-button dark-blue-text" [routerLink]="'/create-route'">
       <fa-icon [icon]="faRoute"></fa-icon>
       <span>Gerar novas rotas</span>
     </div>
   </div>
+  <app-loader *ngIf="!isLoaded"></app-loader>
 </div>
 
 

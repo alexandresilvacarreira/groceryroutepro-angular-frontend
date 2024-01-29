@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {environment as environmentDev} from "../../environments/environment.development";
 import {environment} from "../../environments/environment.development";
 import {User} from "../interfaces";
 import {BehaviorSubject, catchError, of} from "rxjs";
 
-const BASE_URL = environment.BASE_URL;
-
+const BASE_URL = environmentDev.BASE_URL; //dev
+// const BASE_URL = environment.BASE_URL; //prod
 
 @Injectable({
   providedIn: "root"

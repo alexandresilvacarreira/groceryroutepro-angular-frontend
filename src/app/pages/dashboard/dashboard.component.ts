@@ -17,13 +17,14 @@ export class DashboardComponent implements OnInit {
 
   shoppingList!: ShoppingList;
 
-  routes?: RouteObject[];
-  cheapestRoute?: RouteObject;
-  fastestRoute?: RouteObject;
-  savings?: number;
+  routes!: RouteObject[];
+  cheapestRoute!: RouteObject;
+  fastestRoute!: RouteObject;
+  savings!: number;
   showToast = false;
   toastMessage = "";
   showListChangedWarning = false;
+  isLoaded!:boolean;
 
 
   constructor(private shoppingListService: ShoppingListService,
@@ -32,6 +33,8 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.isLoaded = false;
 
     this.showToast = false;
 
@@ -56,6 +59,7 @@ export class DashboardComponent implements OnInit {
           this.fastestRoute = this.routes[1];
           this.savings = Number((this.fastestRoute.shoppingListCost - this.cheapestRoute.shoppingListCost).toFixed(2));
         }
+        this.isLoaded = true;
       }
     })
 

@@ -15,14 +15,15 @@ import {faCircleExclamation} from "@fortawesome/free-solid-svg-icons";
 export class RoutesComponent {
 
   //input Variables
-  routes?: RouteObject[];
-  cheapestRoute?: RouteObject;
-  fastestRoute?: RouteObject;
-  savings?: number;
+  routes!: RouteObject[];
+  cheapestRoute!: RouteObject;
+  fastestRoute!: RouteObject;
+  savings!: number;
   shoppingList?: ShoppingList;
   showToast = false;
   toastMessage = "";
   showListChangedWarning = false;
+  isLoaded!:boolean;
 
   constructor(private googleApiService: GoogleApiService, private shoppingListService: ShoppingListService) {
   }
@@ -30,6 +31,7 @@ export class RoutesComponent {
   ngOnInit() {
 
     this.showToast = false;
+    this.isLoaded = false;
 
     this.googleApiService.getRoutes().subscribe(response => {
       if (response){
@@ -46,6 +48,7 @@ export class RoutesComponent {
           this.fastestRoute = this.routes[1];
           this.savings = Number((this.fastestRoute.shoppingListCost - this.cheapestRoute.shoppingListCost).toFixed(2));
         }
+        this.isLoaded = true;
       }
     })
 

@@ -33,9 +33,7 @@ export class RouteMainCardComponent {
     zoomControl: true
   };
 
-
   polylineOptions: google.maps.PolylineOptions= {strokeColor: '#1565C0', strokeWeight: 2 };
-
 
   @Input() route!: RouteObject;
   @Input() titleCard!: string;
@@ -58,7 +56,6 @@ export class RouteMainCardComponent {
   constructor(private router: Router) {
   }
 
-
   moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng !== null) {
       this.center = (event.latLng.toJSON());
@@ -70,7 +67,6 @@ export class RouteMainCardComponent {
       this.display = event.latLng.toJSON();
     }
   }
-
 
 
   ngOnInit() {
@@ -110,7 +106,6 @@ export class RouteMainCardComponent {
     const url: string= "https://www.google.com/maps/dir/"+waypointsString;
     window.open(url, '_blank');
   }
-
 
 
   generateMarkerOptions(lat: number, lng: number, labelText: string): google.maps.MarkerOptions {
