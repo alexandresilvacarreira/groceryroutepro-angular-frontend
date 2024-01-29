@@ -8,8 +8,8 @@ import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackBarComponent} from "../components/snack-bar/snack-bar.component";
 
-const BASE_URL = environmentDev.BASE_URL; //dev
-// const BASE_URL = environment.BASE_URL; //prod
+// const BASE_URL = environmentDev.BASE_URL; //dev
+const BASE_URL = environment.BASE_URL; //prod
 
 @Injectable({
   providedIn: "root"
