@@ -31,7 +31,6 @@ export class ShoppingListService {
     return this.http.get<ShoppingListResponse>(BASE_URL + "/shopping-list/get")
       .pipe(
         catchError(error => {
-          console.error(error)
           return throwError(() => error);
         }))
       .subscribe(shoppingListResponse => {

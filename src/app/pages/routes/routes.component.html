@@ -21,7 +21,7 @@
             <h3 class="grey-text light-text">Não existem rotas disponiveis.<br>Clica no botão abaixo para gerar rotas!</h3>
           </div>
       </ng-container>
-      <ng-container *ngIf="isLoaded">
+      <ng-container *ngIf="isLoaded && cheapestRoute && fastestRoute">
         <app-route-main-card class="app-route-main-card"
           [route]="cheapestRoute"
           [titleCard]="'Maior poupança'"

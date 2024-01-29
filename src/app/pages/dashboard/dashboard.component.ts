@@ -40,11 +40,10 @@ export class DashboardComponent implements OnInit {
     this.showToast = false;
 
     this.shoppingListService.shoppingList.subscribe(list => {
-
       if (list) {
         this.shoppingList = list;
+        this.isLoadedShoppingList=true;
       }
-      this.isLoadedShoppingList=true;
     })
 
     this.googleApiService.getRoutes().subscribe(response => {
@@ -61,8 +60,8 @@ export class DashboardComponent implements OnInit {
           this.cheapestRoute = this.routes[0];
           this.fastestRoute = this.routes[1];
           this.savings = Number((this.fastestRoute.shoppingListCost - this.cheapestRoute.shoppingListCost).toFixed(2));
+          this.isLoadedRoute = true;
         }
-        this.isLoadedRoute = true;
       }
     })
 

@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="card-wrapper empty-list-message"
-         *ngIf="(!shoppingList || (shoppingList && shoppingList.cheapestProductQuantities.length == 0)) && isLoadedShoppingList">
+         *ngIf="isLoadedShoppingList && (!shoppingList || (shoppingList && shoppingList.cheapestProductQuantities.length == 0))">
       <fa-icon class="icon" [icon]="faCartShopping"></fa-icon>
       <p class="grey-text">A tua lista será apresentada aqui. Toca em “+” para começar a adicionar artigos!</p>
       <div class="plus" [routerLink]="'/search'">
@@ -51,12 +51,12 @@
         </div>
       </div>
     </div>
-    <div class="routes-wrapper">
+    <div class="routes-wrapper" *ngIf="isLoadedRoute">
       <div *ngIf="showListChangedWarning" class="list-changed-warning">
         <fa-icon [icon]="faCircleExclamation"></fa-icon>
         <p class="warning-text no-margin-text">Lista de compras alterada. Deverás gerar novas rotas.</p>
       </div>
-      <ng-container *ngIf="isLoadedRoute">
+      <ng-container *ngIf="fastestRoute && cheapestRoute">
         <app-route-main-card
           [route]="cheapestRoute"
           [titleCard]="'Maior poupança'"
