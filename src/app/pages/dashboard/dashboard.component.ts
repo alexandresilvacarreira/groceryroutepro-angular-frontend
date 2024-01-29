@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
   showToast = false;
   toastMessage = "";
   showListChangedWarning = false;
-  isLoaded!:boolean;
-
+  isLoadedRoute!:boolean;
+  isLoadedShoppingList!:boolean;
 
   constructor(private shoppingListService: ShoppingListService,
               private googleApiService: GoogleApiService) {
@@ -34,14 +34,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.isLoaded = false;
+    this.isLoadedRoute = false;
+    this.isLoadedShoppingList=false;
 
     this.showToast = false;
 
     this.shoppingListService.shoppingList.subscribe(list => {
+
       if (list) {
         this.shoppingList = list;
       }
+      this.isLoadedShoppingList=true;
     })
 
     this.googleApiService.getRoutes().subscribe(response => {
@@ -59,7 +62,7 @@ export class DashboardComponent implements OnInit {
           this.fastestRoute = this.routes[1];
           this.savings = Number((this.fastestRoute.shoppingListCost - this.cheapestRoute.shoppingListCost).toFixed(2));
         }
-        this.isLoaded = true;
+        this.isLoadedRoute = true;
       }
     })
 
