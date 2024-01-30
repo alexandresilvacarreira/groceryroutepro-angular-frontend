@@ -176,9 +176,6 @@ export class CreateRouteComponent {
           let lng = results[0].geometry.location.lng();
           let label = (partida) ? "Partida" : "Destino";
 
-
-
-
           const indexToRemove =  this.lableProxy.findIndex(item => item === label);
 
 

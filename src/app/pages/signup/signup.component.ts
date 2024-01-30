@@ -6,6 +6,11 @@ import {Signup} from "../../interfaces";
 import {Router} from "@angular/router";
 import {catchError, throwError} from "rxjs";
 import {fadeAnimation} from "../../animations";
+import {MatDialog} from "@angular/material/dialog";
+import {GenerateRouteDialogComponent} from "../../components/generate-route-dialog/generate-route-dialog.component";
+import {
+  ProcessingSignupDialogComponent
+} from "../../components/processing-signup-dialog/processing-signup-dialog.component";
 
 
 @Component({
@@ -23,7 +28,7 @@ export class SignupComponent implements OnInit {
   showToast = false;
   message = "";
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, public dialog: MatDialog) {
   }
 
   toggleShowPassword(confirm = false) {
@@ -82,12 +87,16 @@ export class SignupComponent implements OnInit {
         password: passwordInput.value
       }
 
+      let dialogRef = this.dialog.open(ProcessingSignupDialogComponent);
+
       this.authService.signup(signup).pipe(catchError(err =>{
         this.message = err.error.message;
         this.showToast = true;
+        dialogRef.close();
         return throwError(() => err);
       }))
         .subscribe(serverResponse =>{
+          dialogRef.close();
           this.router.navigate(['/confirm-registration'])
       })
 

@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+
+  }
+
+  .dialog-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+  }
+
+}
+
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #0F7293;
+  border-radius: 50%;
+  display: inline-block;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

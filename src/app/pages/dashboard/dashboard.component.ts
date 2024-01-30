@@ -60,8 +60,8 @@ export class DashboardComponent implements OnInit {
           this.cheapestRoute = this.routes[0];
           this.fastestRoute = this.routes[1];
           this.savings = Number((this.fastestRoute.shoppingListCost - this.cheapestRoute.shoppingListCost).toFixed(2));
-          this.isLoadedRoute = true;
         }
+        this.isLoadedRoute = true;
       }
     })
 

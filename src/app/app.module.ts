@@ -85,6 +85,7 @@ import {RouteMainCardComponent} from './components/route-main-card/route-main-ca
 import {HighlightCarouselDesktopComponent} from './components/highlight-carousel-desktop/highlight-carousel-desktop.component';
 import {GenerateRouteDialogComponent} from './components/generate-route-dialog/generate-route-dialog.component';
 import {AuthInterceptor} from "./auth.interceptor";
+import { ProcessingSignupDialogComponent } from './components/processing-signup-dialog/processing-signup-dialog.component';
 
 
 Chart.defaults.font.family = 'Lato';
@@ -156,6 +157,7 @@ registerLocaleData(localePt, 'pt'); // Register the locale data
         RouteMainCardComponent,
         HighlightCarouselDesktopComponent,
         GenerateRouteDialogComponent,
+        ProcessingSignupDialogComponent,
     ],
     imports: [
         BrowserModule,
