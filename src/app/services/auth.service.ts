@@ -5,8 +5,8 @@ import {environment} from "../../environments/environment";
 import {ServerResponse, Signup} from "../interfaces";
 
 
-// const BASE_URL = environmentDev.BASE_URL; //dev
-const BASE_URL = environment.BASE_URL; //prod
+const BASE_URL = environmentDev.BASE_URL; //dev
+// const BASE_URL = environment.BASE_URL; //prod
 
 
 @Injectable({
